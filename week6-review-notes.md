@@ -117,6 +117,70 @@ Common cluster managers:
 
 ---
 
+## SparkContext vs SparkSession
+
+Before writing PySpark code, it helps to know the difference between Spark's two common entry points.
+
+### SparkContext
+
+**SparkContext** is the original entry point for Spark applications.
+It connects your driver program to the Spark cluster and gives access to low-level Spark features.
+
+You use SparkContext when working with:
+
+* RDDs
+* low-level distributed operations
+* methods like `parallelize()`, `textFile()`, and `broadcast()`
+
+In modern PySpark, you usually reach SparkContext through an existing SparkSession:
+
+```python
+sc = spark.sparkContext
+
+rdd = sc.parallelize([1, 2, 3, 4, 5])
+print(rdd.collect())
+```
+
+### SparkSession
+
+**SparkSession** is the newer, higher-level entry point introduced in Spark 2.0.
+It wraps SparkContext and adds support for structured APIs like DataFrames, SQL, Hive integration, and catalog operations.
+
+In modern PySpark code, you usually create a SparkSession first:
+
+```python
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder \
+    .appName("Week6SparkExample") \
+    .master("local[*]") \
+    .getOrCreate()
+
+sc = spark.sparkContext
+```
+
+### Quick Comparison
+
+| Feature | SparkContext | SparkSession |
+| ------- | ------------ | ------------ |
+| Introduced | Original Spark API | Spark 2.0 |
+| Main purpose | Low-level Spark connection and RDD work | Unified entry point for Spark apps |
+| Common variable name | `sc` | `spark` |
+| Best for | RDDs, accumulators, broadcast variables | DataFrames, SQL, modern PySpark workflows |
+| Relationship | Created directly in older code | Contains a SparkContext |
+
+### Rule of Thumb
+
+Use **SparkSession** as your starting point in modern PySpark.
+Then access **SparkContext** from it when you need RDD-level features.
+
+```python
+spark = SparkSession.builder.appName("Example").getOrCreate()
+sc = spark.sparkContext
+```
+
+---
+
 ## Spark Setup and PySpark
 
 ### Definition
