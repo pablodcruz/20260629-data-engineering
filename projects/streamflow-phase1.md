@@ -35,4 +35,8 @@ Group Project
 * Gain experience with containerized development environments.
 * Learn micro-batch architecture patterns and pipeline parameterization.
 
+## Supporting Labs
+
+See [StreamFlow Phase 1 Labs](labs/README.md) for the suggested lab sequence that prepares associates for this project.
+
 ---
