@@ -3,6 +3,10 @@
 These labs prepare associates for **StreamFlow Phase 1 - Containerized Stream Processing Platform**.
 The sequence moves from individual tools to an end-to-end mini pipeline.
 
+Phase 1 now requires a real streaming ingestion path: generated events should be published to Kafka or a Kafka-compatible broker, consumed by Spark Structured Streaming, and written to durable output with checkpointing.
+Some labs still use file-based Spark batch jobs because they teach the surrounding pieces in a smaller form.
+Those labs are scaffolding, not the final project architecture.
+
 ## How to Use These Labs
 
 Each lab is written as a standalone handout.
@@ -54,7 +58,7 @@ Inside that folder, create one subfolder per lab, such as `lab-01-docker`, `lab-
 | 7 | [Airflow DAG Basics](lab-07-airflow-dag-basics.md) | Creating scheduled workflows |
 | 8 | [Airflow + Spark Submit](lab-08-airflow-spark-submit.md) | Orchestrating Spark jobs |
 | 9 | [Data Quality Checks](lab-09-data-quality-checks.md) | Validating pipeline outputs |
-| 10 | [End-to-End Mini Pipeline](lab-10-end-to-end-mini-pipeline.md) | Connecting the core platform pieces |
+| 10 | [End-to-End Mini Pipeline](lab-10-end-to-end-mini-pipeline.md) | Connecting the core platform pieces before replacing file staging with streaming ingest |
 | 11 | [Debugging Distributed Systems](lab-11-debugging-distributed-systems.md) | Reading logs and fixing common issues |
 | 12 | [Team Git Workflow](lab-12-team-git-workflow.md) | Collaborating safely on shared code |
 
@@ -83,6 +87,7 @@ For each lab, the `README.md` should include:
 
 * Keep each lab small enough to finish in one class block or one homework session.
 * Use the same event theme across labs so the work compounds.
+* Make clear that the final project should include `streaming_ingest.py` or an equivalent Spark Structured Streaming job.
 * Encourage teams to document commands and errors as they go.
 * Treat failed runs as useful debugging material, not wasted time.
 * Before the final project build, have each team identify which lab artifacts they can reuse.
