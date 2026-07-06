@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1010" height="860" viewBox="0 0 1010 860" role="img" aria-labelledby="title desc">
+  <title id="title">Comparison of S3, EMR, Hadoop, and Python for Big Data</title>
+  <desc id="desc">A comparison table showing type, use cases, pros, cons, and relationships between S3, EMR, Hadoop, and Python.</desc>
+  <style>
+    .title { font: 700 21px Arial, Helvetica, sans-serif; fill: #171717; }
+    .header { font: 700 16px Arial, Helvetica, sans-serif; fill: #171717; }
+    .label { font: 700 16px Arial, Helvetica, sans-serif; fill: #171717; }
+    .cell { font: 400 16px Arial, Helvetica, sans-serif; fill: #171717; }
+    .grid { stroke: #b7b7b7; stroke-width: 1; }
+  </style>
+
+  <rect width="1010" height="860" fill="#ffffff"/>
+  <text class="title" x="29" y="34">Comparison of S3, EMR, Hadoop, and Python for Big Data:</text>
+
+  <rect x="29" y="51" width="952" height="787" rx="16" fill="#ffffff" stroke="#b7b7b7" stroke-width="1.5"/>
+  <rect x="29" y="51" width="952" height="76" rx="16" fill="#f3f3f3"/>
+  <path d="M29 111 V127 H981 V51 H965 V111 Z" fill="#f3f3f3"/>
+
+  <line class="grid" x1="29" y1="127" x2="981" y2="127"/>
+  <line class="grid" x1="29" y1="230" x2="981" y2="230"/>
+  <line class="grid" x1="29" y1="363" x2="981" y2="363"/>
+  <line class="grid" x1="29" y1="559" x2="981" y2="559"/>
+  <line class="grid" x1="29" y1="733" x2="981" y2="733"/>
+
+  <line class="grid" x1="157" y1="51" x2="157" y2="838"/>
+  <line class="grid" x1="378" y1="51" x2="378" y2="838"/>
+  <line class="grid" x1="595" y1="51" x2="595" y2="838"/>
+  <line class="grid" x1="771" y1="51" x2="771" y2="838"/>
+
+  <text class="header" x="48" y="93">Feature</text>
+  <text class="header" x="176" y="93">S3</text>
+  <text class="header" x="397" y="93">EMR</text>
+  <text class="header" x="614" y="93">Hadoop</text>
+  <text class="header" x="790" y="93">Python</text>
+
+  <text class="label" x="48" y="180">Type</text>
+  <text class="cell" x="176" y="180">Storage service</text>
+  <text class="cell" x="397" y="163">Managed big data</text>
+  <text class="cell" x="397" y="199">platform</text>
+  <text class="cell" x="614" y="163">Open-source</text>
+  <text class="cell" x="614" y="199">framework</text>
+  <text class="cell" x="790" y="180">Programming language</text>
+
+  <text class="label" x="48" y="305">Use cases</text>
+  <text class="cell" x="176" y="268">Object storage, backup,</text>
+  <text class="cell" x="176" y="301">disaster recovery, web</text>
+  <text class="cell" x="176" y="334">hosting</text>
+  <text class="cell" x="397" y="268">Large-scale data</text>
+  <text class="cell" x="397" y="301">processing, analytics,</text>
+  <text class="cell" x="397" y="334">machine learning</text>
+  <text class="cell" x="614" y="285">Distributed data</text>
+  <text class="cell" x="614" y="318">processing</text>
+  <text class="cell" x="790" y="268">Data analysis, scripting,</text>
+  <text class="cell" x="790" y="301">automation, scientific</text>
+  <text class="cell" x="790" y="334">computing</text>
+
+  <text class="label" x="48" y="458">Pros</text>
+  <text class="cell" x="176" y="399">Highly scalable and</text>
+  <text class="cell" x="176" y="432">reliable, cost-effective for</text>
+  <text class="cell" x="176" y="465">storing large data,</text>
+  <text class="cell" x="176" y="498">integrates with other AWS</text>
+  <text class="cell" x="176" y="531">services</text>
+  <text class="cell" x="397" y="399">Easy to use, pre-</text>
+  <text class="cell" x="397" y="432">configured, supports</text>
+  <text class="cell" x="397" y="465">multiple languages and</text>
+  <text class="cell" x="397" y="498">frameworks, scales</text>
+  <text class="cell" x="397" y="531">automatically</text>
+  <text class="cell" x="614" y="421">Open-source,</text>
+  <text class="cell" x="614" y="454">flexible, large</text>
+  <text class="cell" x="614" y="487">community,</text>
+  <text class="cell" x="614" y="520">customizable</text>
+  <text class="cell" x="790" y="399">Versatile, easy to learn,</text>
+  <text class="cell" x="790" y="432">widely used, integrates</text>
+  <text class="cell" x="790" y="465">with libraries for data</text>
+  <text class="cell" x="790" y="498">analysis and</text>
+  <text class="cell" x="790" y="531">visualization</text>
+
+  <text class="label" x="48" y="649">Cons</text>
+  <text class="cell" x="176" y="603">Not suitable for complex</text>
+  <text class="cell" x="176" y="636">data processing, limited</text>
+  <text class="cell" x="176" y="669">data manipulation</text>
+  <text class="cell" x="176" y="702">capabilities</text>
+  <text class="cell" x="397" y="603">Managed service with</text>
+  <text class="cell" x="397" y="636">limited control, higher</text>
+  <text class="cell" x="397" y="669">cost compared to bare-</text>
+  <text class="cell" x="397" y="702">metal, vendor lock-in</text>
+  <text class="cell" x="614" y="586">Steep learning</text>
+  <text class="cell" x="614" y="619">curve, requires</text>
+  <text class="cell" x="614" y="652">manual cluster</text>
+  <text class="cell" x="614" y="685">management,</text>
+  <text class="cell" x="614" y="718">resource-intensive</text>
+  <text class="cell" x="790" y="603">Not a complete</text>
+  <text class="cell" x="790" y="636">ecosystem, requires</text>
+  <text class="cell" x="790" y="669">integration with other</text>
+  <text class="cell" x="790" y="702">tools for data</text>
+  <text class="cell" x="790" y="735">processing and storage</text>
+
+  <text class="label" x="48" y="774">Relationship</text>
+  <text class="label" x="48" y="807">to others</text>
+  <text class="cell" x="176" y="774">Used to store data</text>
+  <text class="cell" x="176" y="807">processed by EMR</text>
+  <text class="cell" x="397" y="757">Can use Python scripts</text>
+  <text class="cell" x="397" y="790">to analyze data within</text>
+  <text class="cell" x="397" y="823">EMR</text>
+  <text class="cell" x="614" y="774">Hadoop framework</text>
+  <text class="cell" x="614" y="807">used by EMR</text>
+  <text class="cell" x="790" y="757">Widely used for data</text>
+  <text class="cell" x="790" y="790">analysis within EMR and</text>
+  <text class="cell" x="790" y="823">Hadoop ecosystems</text>
+</svg>

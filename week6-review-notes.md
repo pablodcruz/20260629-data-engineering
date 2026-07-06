@@ -45,6 +45,10 @@ Spark is commonly used when one machine is not enough to process data efficientl
 * Integrates with storage systems like HDFS, S3, local files, Hive, and databases.
 * Can run locally, on standalone clusters, YARN, Kubernetes, or AWS EMR.
 
+### Big Data Tool Comparison
+
+![Comparison of S3, EMR, Hadoop, and Python for Big Data](assets/week6-big-data-tools-comparison.svg)
+
 ---
 
 ## Hadoop vs Spark

@@ -53,6 +53,7 @@ Inside that folder, create one subfolder per lab, such as `lab-01-docker`, `lab-
 | 2 | [Kafka Producer and Consumer](lab-02-kafka-producer-consumer.md) | Sending and reading event messages |
 | 3 | [Event Schema Design](lab-03-event-schema-design.md) | Defining clean event payloads |
 | 4 | [PySpark DataFrames](lab-04-pyspark-dataframes.md) | Transforming structured event data |
+| 4B | [Spark SQL](lab-04b-spark-sql.md) | Querying DataFrames with SQL, joins, set operations, partitioning, and caching |
 | 5 | [Spark Batch Job](lab-05-spark-batch-job.md) | Running Spark code with `spark-submit` |
 | 6 | [Micro-Batch Simulation](lab-06-micro-batch-simulation.md) | Processing data in small batches |
 | 7 | [Airflow DAG Basics](lab-07-airflow-dag-basics.md) | Creating scheduled workflows |
@@ -67,7 +68,7 @@ Inside that folder, create one subfolder per lab, such as `lab-01-docker`, `lab-
 | Week | Labs |
 | ---- | ---- |
 | Week 1 | Labs 1-4 |
-| Week 2 | Labs 5-8 |
+| Week 2 | Lab 4B and Labs 5-8 |
 | Week 3 | Labs 9-12 |
 
 ## Deliverable Standard (Optional, but recommended for your portfolio)
