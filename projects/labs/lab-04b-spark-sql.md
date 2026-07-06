@@ -30,6 +30,18 @@ You will create:
 * PySpark installed locally.
 * Lab 4 completed or equivalent DataFrame familiarity.
 
+> Windows note: local Parquet writes can fail on Windows if Spark cannot find Hadoop's `winutils.exe` helper. If you see `HADOOP_HOME and hadoop.home.dir are unset` or `Cannot run program ... winutils.exe`, install a compatible `winutils.exe` and set the Hadoop environment variables before running the script.
+>
+> ```bash
+> mkdir -p /c/hadoop/bin
+> curl -L https://github.com/steveloughran/winutils/raw/master/hadoop-3.3.1/bin/winutils.exe -o /c/hadoop/bin/winutils.exe
+> export HADOOP_HOME=/c/hadoop
+> export PATH="$HADOOP_HOME/bin:$PATH"
+> export hadoop.home.dir="$HADOOP_HOME"
+> ```
+>
+> If you are using PowerShell or Command Prompt, set the same values as environment variables instead of using `export`.
+
 ## Suggested Folder
 
 From your lab workspace:
@@ -332,6 +344,7 @@ Submit:
 | Timestamp values are null | Spark could not parse `event_ts` | Compare the input timestamp format to the sample data |
 | Output path already exists | Spark will not overwrite unless configured | This script uses `mode("overwrite")`; confirm the path is correct |
 | Empty join result | Join keys do not match | Compare `user_id` values in both input files |
+| Parquet write fails on Windows | Missing Hadoop `winutils.exe` or unset Hadoop environment variables | Install a compatible `winutils.exe` and set `HADOOP_HOME`, `hadoop.home.dir`, and `PATH` before running the script |
 
 ## Cleanup
 
