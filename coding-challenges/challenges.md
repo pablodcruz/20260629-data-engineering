@@ -232,21 +232,3 @@ Things to consider:
 
 * Use `try` and `except`.
 * Handle the specific error caused by division by zero.
-
-## Interviewer Evaluation Guide
-
-Look for:
-
-* Clear problem understanding.
-* Simple and correct Python syntax.
-* Good use of variables, loops, conditionals, and functions.
-* Ability to test with examples.
-* Ability to explain the solution in plain language.
-* Willingness to adjust after feedback.
-
-Avoid grading based on:
-
-* Advanced algorithm knowledge.
-* Memorized one-line tricks.
-* Competitive programming style.
-
