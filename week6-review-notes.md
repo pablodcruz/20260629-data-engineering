@@ -333,6 +333,33 @@ print(words.collect())
 
 Wide transformations cause a **shuffle**, which is expensive because data moves across the network.
 
+### RDD Set-Like Transformations
+
+RDDs also support operations that feel similar to mathematical set operations.
+These are useful when comparing two distributed collections.
+
+| Operation | Meaning | Example Use |
+| --------- | ------- | ----------- |
+| `union()` | Combine records from both RDDs | Merge two input files |
+| `intersection()` | Keep records found in both RDDs | Find common IDs |
+| `subtract()` | Keep records from the first RDD that are not in the second | Remove known bad records |
+| `distinct()` | Remove duplicate records | Get unique values |
+
+```python
+active_users = sc.parallelize([1, 2, 3, 4])
+premium_users = sc.parallelize([3, 4, 5])
+
+all_seen = active_users.union(premium_users)
+both_groups = active_users.intersection(premium_users)
+active_not_premium = active_users.subtract(premium_users)
+unique_users = all_seen.distinct()
+```
+
+Important point: `union()` does not remove duplicates by itself.
+If you need unique records, call `distinct()` after the union.
+
+Set-like operations can be expensive on large data because Spark often needs to compare records across partitions, which may require a shuffle.
+
 ---
 
 ## Actions

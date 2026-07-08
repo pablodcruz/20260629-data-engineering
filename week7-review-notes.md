@@ -577,7 +577,27 @@ spark.sql("SELECT * FROM global_temp.students_global").show()
 
 ### Definition
 
-Set operations compare or combine DataFrames with compatible schemas.
+Set operations combine or compare two DataFrames, similar to set theory in mathematics.
+They are useful when you need to merge datasets, find common rows, or identify rows that exist in one dataset but not another.
+
+Common use cases:
+
+| Operation | Question It Answers |
+| --------- | ------------------- |
+| `union()` | How do I combine rows from both DataFrames? |
+| `intersect()` | Which rows appear in both DataFrames? |
+| `exceptAll()` / `subtract()` | Which rows are in the first DataFrame but not the second? |
+
+### Schema Requirement
+
+A critical requirement is that both DataFrames must have:
+
+* The same number of columns.
+* Compatible data types in matching positions.
+
+For most set operations, Spark compares columns by position, not by name.
+This means column order matters.
+Use `unionByName()` when column names should control alignment.
 
 ### Example DataFrames
 
@@ -595,38 +615,75 @@ summer = spark.createDataFrame(
 
 ### Union
 
+`union()` combines rows from two DataFrames.
+In PySpark, it keeps duplicates.
+
 ```python
 spring.union(summer).show()
 ```
 
-`union()` keeps duplicates.
 Use `distinct()` if you want unique rows.
 
 ```python
 spring.union(summer).distinct().show()
 ```
 
+Expected idea:
+
+```text
+union: Ada, Grace, Grace, Alan
+union + distinct: Ada, Grace, Alan
+```
+
 ### Intersect
+
+`intersect()` returns rows that appear in both DataFrames.
+It behaves like an `INTERSECT DISTINCT`, so duplicate common rows are not repeated.
 
 ```python
 spring.intersect(summer).show()
 ```
 
+Expected idea:
+
+```text
+Grace
+```
+
 ### Except
+
+`exceptAll()` returns rows from the first DataFrame that are not removed by matching rows in the second DataFrame.
+It is duplicate-aware.
 
 ```python
 spring.exceptAll(summer).show()
 ```
 
+For a simpler "left side minus right side" explanation, you may also see `subtract()`:
+
+```python
+spring.subtract(summer).show()
+```
+
+Expected idea:
+
+```text
+Ada
+```
+
 ### Set Operation Notes
 
-* Schemas must be compatible.
-* Column order matters in `union()`.
+* Schemas must have the same number of columns and compatible data types.
+* Column order matters for position-based operations.
 * `unionByName()` is safer when column names should control alignment.
+* `union()` keeps duplicates; add `distinct()` when you need unique rows.
+* These operations can trigger shuffles because Spark may need to compare rows across partitions.
 
 ```python
 combined = spring.unionByName(summer)
 ```
+
+"Set operations in PySpark are used to combine or compare DataFrames. For example, `union()` stacks rows, `intersect()` finds rows in both DataFrames, and `exceptAll()` or `subtract()` finds rows from one DataFrame that are not in another. The main requirement is that the DataFrames have the same number of columns with compatible types, and column order matters unless we use `unionByName()`."
 
 ---
 
