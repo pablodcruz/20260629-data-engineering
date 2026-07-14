@@ -76,29 +76,24 @@ By the end of this project, associates should be able to:
 
 ### Data Flow
 
-```text
-Phase 1 Streaming Output
-    |
-    v
-Raw Parquet or Curated Event Files
-    |
-    v
-Snowflake Stage
-    |
-    v
-Snowflake Bronze Layer
-    |
-    v
-Snowflake Silver Layer
-    |
-    v
-Snowflake Gold Star Schema
-    |
-    v
-Power BI Semantic Model
-    |
-    v
-Interactive Dashboards and KPIs
+```mermaid
+flowchart TD
+    phase1[Phase 1 Streaming Output]
+    files[(Raw Parquet or Curated Event Files)]
+    stage[(Snowflake Stage)]
+    bronze[Bronze Layer<br/>Raw and Auditable]
+    silver[Silver Layer<br/>Clean and Standardized]
+    gold[Gold Layer<br/>Star Schema]
+    semantic[Power BI Semantic Model]
+    dashboards[Interactive Dashboards and KPIs]
+
+    phase1 --> files
+    files --> stage
+    stage --> bronze
+    bronze --> silver
+    silver --> gold
+    gold --> semantic
+    semantic --> dashboards
 ```
 
 ### Core Layers
@@ -327,23 +322,13 @@ The Airflow DAG should coordinate the major warehouse steps.
 
 Suggested task flow:
 
-```text
-check_source_files
-    |
-    v
-load_bronze_events
-    |
-    v
-run_silver_transformations
-    |
-    v
-run_quality_checks
-    |
-    v
-build_gold_tables
-    |
-    v
-publish_run_summary
+```mermaid
+flowchart TD
+    check[Check Source Files] --> bronze[Load Bronze Events]
+    bronze --> silver[Run Silver Transformations]
+    silver --> quality[Run Quality Checks]
+    quality --> gold[Build Gold Tables]
+    gold --> publish[Publish Run Summary]
 ```
 
 ## Dashboard Requirements

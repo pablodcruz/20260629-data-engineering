@@ -9,6 +9,15 @@ Use Airflow to orchestrate a Spark batch job.
 Spark does the data processing, but Airflow decides when the processing happens.
 In this lab, Airflow runs a `spark-submit` command, waits for it to finish, and checks that output was created.
 
+```mermaid
+flowchart LR
+    airflow[Airflow DAG] --> submit[spark-submit]
+    submit --> spark[Spark Job]
+    input[(Event Data)] --> spark
+    spark --> output[(Summary Output)]
+    output --> validate[Airflow Validation Task]
+```
+
 ## What You Will Build
 
 You will create:

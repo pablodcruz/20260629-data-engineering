@@ -16,6 +16,22 @@ This lab builds a mini version of that platform:
 5. Spark writes a curated summary output.
 6. Airflow validates that the output exists.
 
+```mermaid
+flowchart LR
+    generate[Airflow Generates Events]
+    topic[[Kafka Topic]]
+    landing[(JSON Lines Staging File)]
+    spark[Spark Summary Job]
+    output[(Curated Summary)]
+    validate[Airflow Validates Output]
+
+    generate --> topic
+    generate --> landing
+    landing --> spark
+    spark --> output
+    output --> validate
+```
+
 The file staging step keeps the Spark portion simple and reliable while still giving you Kafka practice.
 
 ## What You Will Build

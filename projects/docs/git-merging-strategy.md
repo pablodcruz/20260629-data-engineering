@@ -184,20 +184,14 @@ Rebase your feature branch onto `main`, then merge through a PR.
 
 Preferred flow:
 
-```text
-feature branch
-    |
-    v
-pull request
-    |
-    v
-review
-    |
-    v
-squash merge into main
-    |
-    v
-everyone pulls latest main
+```mermaid
+flowchart TD
+    branch[Feature Branch] --> pr[Pull Request]
+    pr --> review[Teammate Review]
+    review --> checks{Approved and Checks Pass?}
+    checks -- No --> branch
+    checks -- Yes --> merge[Squash Merge into Main]
+    merge --> pull[Everyone Pulls Latest Main]
 ```
 
 After a teammate merges:
@@ -232,8 +226,11 @@ Suggested order:
 
 The first integration target should be small:
 
-```text
-producer -> broker topic -> streaming_ingest.py -> raw Parquet output
+```mermaid
+flowchart LR
+    producer[Event Producer] --> topic[[Broker Topic]]
+    topic --> ingest[streaming_ingest.py]
+    ingest --> parquet[(Raw Parquet Output)]
 ```
 
 Once that works, the Airflow and summary pieces become easier to reason about.

@@ -10,6 +10,13 @@ StreamFlow needs orchestration.
 Airflow will coordinate when work happens, which task depends on another task, and where to look when something fails.
 This lab starts with a small DAG before connecting Airflow to Spark.
 
+```mermaid
+flowchart LR
+    generate[Generate Events] --> validate[Validate Events]
+    validate --> summarize[Summarize Events]
+    summarize --> output[(Summary File)]
+```
+
 ## What You Will Build
 
 You will create:

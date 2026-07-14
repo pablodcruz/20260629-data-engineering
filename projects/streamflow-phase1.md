@@ -94,23 +94,24 @@ By the end of this project, associates should be able to:
 
 ### Data Flow
 
-```text
-Event Generator / Producer
-    |
-    v
-Kafka-compatible Topic: streamflow.events
-    |
-    v
-Spark Structured Streaming Ingest Job
-    |
-    v
-Raw Parquet Stream Output + Checkpoint Directory
-    |
-    v
-Spark Batch Summary Job
-    |
-    v
-Curated Summary Outputs + Airflow Logs
+```mermaid
+flowchart TD
+    producer[Event Generator / Producer]
+    topic[[Kafka-compatible Topic<br/>streamflow.events]]
+    ingest[Spark Structured Streaming<br/>Ingest Job]
+    raw[(Raw Parquet Stream Output)]
+    checkpoint[(Checkpoint Directory)]
+    summary[Spark Batch Summary Job]
+    curated[(Curated Summary Outputs)]
+    logs[(Airflow Logs)]
+
+    producer --> topic
+    topic --> ingest
+    ingest --> raw
+    ingest --> checkpoint
+    raw --> summary
+    summary --> curated
+    summary --> logs
 ```
 
 ### Core Components

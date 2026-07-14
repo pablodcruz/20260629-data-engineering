@@ -10,6 +10,34 @@ StreamFlow receives events from several users.
 Events for one user should stay ordered, while several consumer instances should be able to process the topic in parallel.
 In this lab, you will publish keyed records, inspect their partition metadata, run cooperating consumers, and examine committed offsets.
 
+```mermaid
+flowchart LR
+    producer[Keyed Producer]
+
+    subgraph topic[streamflow.keyed-events]
+        p0[Partition 0]
+        p1[Partition 1]
+        p2[Partition 2]
+    end
+
+    subgraph analytics[Consumer Group: analytics]
+        consumerA[Consumer A]
+        consumerB[Consumer B]
+    end
+
+    archive[Consumer Group: archive]
+
+    producer --> p0
+    producer --> p1
+    producer --> p2
+    p0 --> consumerA
+    p1 --> consumerA
+    p2 --> consumerB
+    p0 --> archive
+    p1 --> archive
+    p2 --> archive
+```
+
 ## What You Will Build
 
 You will create:

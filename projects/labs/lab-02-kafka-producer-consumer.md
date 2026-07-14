@@ -9,6 +9,14 @@ Send event data into Kafka and read it back using command-line tools and Python.
 Kafka is the event backbone for StreamFlow.
 In this lab, you will start a local Kafka broker, create a topic, publish JSON event messages, and consume them back.
 
+```mermaid
+flowchart LR
+    consoleProducer[Console Producer] --> topic[[streamflow.events]]
+    pythonProducer[Python Producer] --> topic
+    topic --> consoleConsumer[Console Consumer]
+    topic --> pythonConsumer[Python Consumer]
+```
+
 ## What You Will Build
 
 You will create:

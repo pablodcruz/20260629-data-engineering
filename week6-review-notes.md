@@ -96,6 +96,19 @@ They can work together: Spark can read data from HDFS or S3 and run on YARN or E
 | **Executors** | Worker processes that run tasks and store data |
 | **Tasks** | Small units of work sent to executors |
 
+```mermaid
+flowchart TD
+    app[PySpark Application] --> driver[Driver]
+    driver --> context[SparkContext]
+    driver <--> manager[Cluster Manager]
+    manager --> executor1[Executor 1]
+    manager --> executor2[Executor 2]
+    driver -->|Schedules tasks| executor1
+    driver -->|Schedules tasks| executor2
+    executor1 -->|Results and status| driver
+    executor2 -->|Results and status| driver
+```
+
 ### Driver
 
 The **driver** coordinates the Spark application.
