@@ -251,7 +251,15 @@ df.write.mode("overwrite").json("output/students_json")
 
 ## DataFrame Operations
 
+### Definition
+
+**DataFrame operations** are methods used to select, filter, sort, transform, summarize, and combine structured data.
+Most DataFrame operations are transformations, which means they build a new DataFrame instead of immediately changing data on disk.
+
 ### Selecting Columns
+
+**Data selection** means choosing which columns to keep from a DataFrame.
+It is similar to writing a SQL `SELECT` clause.
 
 ```python
 df.select("name", "score").show()
@@ -265,6 +273,9 @@ df.select(col("name"), col("score")).show()
 
 ### Aliasing Columns
 
+**Aliasing** means giving a column a temporary or output-friendly name.
+This is useful when a calculated column or renamed field needs a clearer label.
+
 ```python
 df.select(
     col("name"),
@@ -273,6 +284,9 @@ df.select(
 ```
 
 ### Filtering Rows
+
+**Filtering** means keeping only the rows that match a condition.
+It is similar to writing a SQL `WHERE` clause.
 
 ```python
 df.filter(col("score") >= 90).show()
@@ -284,6 +298,9 @@ df.where("score >= 90").show()
 
 ### Multiple Conditions
 
+Multiple conditions combine two or more filters.
+In PySpark column expressions, use `&` for AND, `|` for OR, and `~` for NOT.
+
 ```python
 df.filter(
     (col("department") == "Engineering") & (col("score") >= 90)
@@ -291,6 +308,9 @@ df.filter(
 ```
 
 ### Sorting
+
+**Sorting** means arranging rows by one or more columns.
+Spark uses ascending order by default unless you specify descending order.
 
 ```python
 df.orderBy("score").show()
@@ -301,8 +321,14 @@ df.orderBy(col("score").desc()).show()
 
 ## Adding, Removing, and Renaming Columns
 
+### Definition
+
+Column operations change the shape or meaning of a DataFrame by adding new fields, transforming existing fields, renaming fields, or dropping fields.
+Because DataFrames are immutable, each column operation returns a new DataFrame.
+
 ### Adding Columns
 
+Adding a column means creating a new field in the DataFrame output.
 Use `withColumn()` to add or replace a column.
 
 ```python
@@ -314,17 +340,23 @@ df_with_school = df.withColumn("school", lit("Data Foundation"))
 
 ### Transforming Existing Columns
 
+Transforming a column means creating a new version of a value based on an expression, calculation, or function.
+
 ```python
 df_scaled = df.withColumn("score_scaled", col("score") / 100)
 ```
 
 ### Renaming Columns
 
+Renaming a column changes the column name while keeping the underlying values.
+
 ```python
 df_renamed = df.withColumnRenamed("score", "exam_score")
 ```
 
 ### Removing Columns
+
+Removing a column means dropping it from the DataFrame output.
 
 ```python
 df_dropped = df.drop("department")

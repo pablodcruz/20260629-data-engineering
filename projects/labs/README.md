@@ -62,6 +62,8 @@ Inside that folder, create one subfolder per lab, such as `lab-01-docker`, `lab-
 | 10 | [End-to-End Mini Pipeline](lab-10-end-to-end-mini-pipeline.md) | Connecting the core platform pieces before replacing file staging with streaming ingest |
 | 11 | [Debugging Distributed Systems](lab-11-debugging-distributed-systems.md) | Reading logs and fixing common issues |
 | 12 | [Team Git Workflow](lab-12-team-git-workflow.md) | Collaborating safely on shared code |
+| 13 | [Kafka Partitions, Keys, and Consumer Groups](lab-13-kafka-partitions-consumer-groups.md) | Observing partition routing, group coordination, committed offsets, and lag |
+| 14 | [Airflow Parameters, Dynamic Tasks, Connections, and Hooks](lab-14-airflow-dynamic-dags-connections-hooks.md) | Building configurable mapped workflows with externalized connection settings |
 
 ## Suggested Pacing
 
@@ -70,6 +72,7 @@ Inside that folder, create one subfolder per lab, such as `lab-01-docker`, `lab-
 | Week 1 | Labs 1-4 |
 | Week 2 | Lab 4B and Labs 5-8 |
 | Week 3 | Labs 9-12 |
+| Week 4 | Labs 13-14 |
 
 ## Deliverable Standard (Optional, but recommended for your portfolio)
 
