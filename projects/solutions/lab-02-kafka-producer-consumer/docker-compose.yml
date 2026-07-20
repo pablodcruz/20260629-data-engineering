@@ -1,0 +1,41 @@
+services:
+  kafka:
+    # Pin the image so every student runs the same Kafka version.
+    image: apache/kafka:4.3.1
+    hostname: kafka
+    container_name: streamflow_lab02_kafka
+    ports:
+      # Python programs on the host connect through localhost:9092.
+      - "9092:9092"
+    environment:
+      # This single node performs both Kafka roles. Production clusters usually
+      # separate or replicate these roles across multiple machines.
+      KAFKA_NODE_ID: 1
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      # Advertise one address to host clients and another to Docker services.
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT_HOST://localhost:9092,PLAINTEXT://kafka:19092
+      KAFKA_PROCESS_ROLES: broker,controller
+      # KRaft lets Kafka manage metadata without a separate ZooKeeper service.
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka:29093
+      KAFKA_LISTENERS: CONTROLLER://:29093,PLAINTEXT_HOST://:9092,PLAINTEXT://:19092
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      CLUSTER_ID: 4L6g3nShT-eMCtK--X86sw
+      # Internal topics cannot use Kafka's production replication defaults in a
+      # one-broker learning environment, so their replication factor is one.
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_SHARE_COORDINATOR_STATE_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_SHARE_COORDINATOR_STATE_TOPIC_MIN_ISR: 1
+      KAFKA_LOG_DIRS: /tmp/kraft-combined-logs
+    healthcheck:
+      # Compose reports healthy only after the broker accepts Kafka CLI calls.
+      test:
+        - CMD-SHELL
+        - /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --list >/dev/null 2>&1
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 15s

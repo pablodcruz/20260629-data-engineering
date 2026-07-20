@@ -1,0 +1,25 @@
+services:
+  web:
+    # Both services use a small Python image so this lab can focus on Compose
+    # concepts without requiring us to build custom images yet.
+    image: python:3.11-slim
+    container_name: streamflow_lab01_web
+    working_dir: /app
+    # Start a simple HTTP server inside the container on port 8000.
+    command: python -m http.server 8000
+    ports:
+      # HOST_PORT:CONTAINER_PORT makes the server reachable from Windows.
+      - "8000:8000"
+    volumes:
+      # Mount the local site read-only because the server never writes to it.
+      - ./site:/app:ro
+
+  worker:
+    image: python:3.11-slim
+    container_name: streamflow_lab01_worker
+    # This background process has no port. It writes a heartbeat to container
+    # logs every five seconds so we can practice inspecting service logs.
+    command: >
+      python -c "import time;
+      print('worker started', flush=True);
+      [print(f'heartbeat {n}', flush=True) or time.sleep(5) for n in range(1, 100)]"
