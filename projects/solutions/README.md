@@ -24,7 +24,7 @@ not be committed unless a lab explicitly requires them.
 | 02 | [Kafka Producer and Consumer](lab-02-kafka-producer-consumer/README.md) | Complete; broker verified, Python test pending |
 | 03 | [Event Schema Design](lab-03-event-schema-design/README.md) | Complete and verified |
 | 04 | [PySpark DataFrames](lab-04-pyspark-dataframes/README.md) | Complete; Windows output fallback verified |
-| 04B | Spark SQL | Planned |
+| 04B | [Spark SQL](lab-04b-spark-sql/README.md) | Complete; Spark runtime verification pending |
 | 05 | Spark Batch Job | Planned |
 | 06 | Micro-Batch Simulation | Planned |
 | 07 | Airflow DAG Basics | Planned |

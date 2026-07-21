@@ -1,0 +1,10 @@
+{"event_id":"evt_001","event_type":"page_view","user_id":"user_101","event_ts":"2026-07-06T14:00:00Z","source":"web","session_id":"sess_001","amount":null}
+{"event_id":"evt_002","event_type":"video_play","user_id":"user_102","event_ts":"2026-07-06T14:03:00Z","source":"mobile","session_id":"sess_002","amount":null}
+{"event_id":"evt_003","event_type":"purchase","user_id":"user_103","event_ts":"2026-07-06T14:07:00Z","source":"web","session_id":"sess_003","amount":19.99}
+{"event_id":"evt_004","event_type":"page_view","user_id":"user_101","event_ts":"2026-07-06T14:09:00Z","source":"web","session_id":"sess_001","amount":null}
+{"event_id":"evt_005","event_type":"add_to_cart","user_id":"user_104","event_ts":"2026-07-06T14:12:00Z","source":"mobile","session_id":"sess_004","amount":null}
+{"event_id":"evt_006","event_type":"purchase","user_id":"user_104","event_ts":"2026-07-06T14:18:00Z","source":"mobile","session_id":"sess_004","amount":9.99}
+{"event_id":"evt_007","event_type":"page_view","user_id":"user_105","event_ts":"2026-07-07T09:01:00Z","source":"web","session_id":"sess_005","amount":null}
+{"event_id":"evt_008","event_type":"purchase","user_id":"user_106","event_ts":"2026-07-07T09:05:00Z","source":"web","session_id":"sess_006","amount":29.99}
+{"event_id":"evt_009","event_type":"video_play","user_id":"user_102","event_ts":"2026-07-07T09:08:00Z","source":"mobile","session_id":"sess_007","amount":null}
+{"event_id":"evt_010","event_type":"purchase","user_id":"user_999","event_ts":"2026-07-07T09:15:00Z","source":"partner","session_id":"sess_008","amount":49.99}
