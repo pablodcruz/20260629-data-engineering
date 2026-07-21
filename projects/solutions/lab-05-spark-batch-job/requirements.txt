@@ -1,0 +1,2 @@
+# Keep the batch job on the same Java 11-compatible Spark release as Lab 4.
+pyspark==3.5.9
