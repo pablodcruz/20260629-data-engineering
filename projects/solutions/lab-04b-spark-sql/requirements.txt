@@ -1,0 +1,2 @@
+# Spark 3.5.x supports Java 11; Spark 4.x requires a newer Java runtime.
+pyspark==3.5.9
