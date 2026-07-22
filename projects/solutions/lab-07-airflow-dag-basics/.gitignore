@@ -1,0 +1,10 @@
+# Airflow writes runtime artifacts into these bind-mounted directories.
+data/*
+!data/.gitkeep
+logs/*
+!logs/.gitkeep
+
+# Local configuration and Python caches are machine-specific.
+.env
+__pycache__/
+*.py[cod]
