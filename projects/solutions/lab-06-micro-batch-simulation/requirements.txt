@@ -1,0 +1,2 @@
+# Use the same Java 11-compatible Spark runtime as Labs 4, 4B, and 5.
+pyspark==3.5.9

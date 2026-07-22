@@ -1,0 +1,2 @@
+{"event_id":"evt_003","event_type":"purchase","user_id":"user_103","event_ts":"2026-06-30T14:05:00Z","source":"web","payload":{"amount":"19.99"}}
+{"event_id":"evt_004","event_type":"page_view","user_id":"user_101","event_ts":"2026-06-30T14:08:00Z","source":"web","payload":{"page":"/account"}}

@@ -1,0 +1,2 @@
+{"event_id":"evt_005","event_type":"add_to_cart","user_id":"user_104","event_ts":"2026-06-30T14:10:00Z","source":"mobile","payload":{"sku":"sku_001"}}
+{"event_id":"evt_006","event_type":"purchase","user_id":"user_104","event_ts":"2026-06-30T14:12:00Z","source":"mobile","payload":{"amount":"9.99"}}
