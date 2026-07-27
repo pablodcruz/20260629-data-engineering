@@ -27,7 +27,7 @@ not be committed unless a lab explicitly requires them.
 | 04B | [Spark SQL](lab-04b-spark-sql/README.md) | Complete; Spark runtime verification pending |
 | 05 | [Spark Batch Job](lab-05-spark-batch-job/README.md) | Complete and verified on macOS |
 | 06 | [Micro-Batch Simulation](lab-06-micro-batch-simulation/README.md) | Complete and verified on macOS |
-| 07 | Airflow DAG Basics | Planned |
+| 07 | [Airflow DAG Basics](lab-07-airflow-dag-basics/README.md) | Complete and verified on macOS |
 | 08 | Airflow + Spark Submit | Planned |
 | 09 | Data Quality Checks | Planned |
 | 10 | End-to-End Mini Pipeline | Planned |
