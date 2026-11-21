@@ -58,6 +58,8 @@
     state.view = name;
     if (name === "dashboard") renderDashboard();
     window.scrollTo(0, 0);
+    const view = document.getElementById(`${name}-view`);
+    (view.querySelector("[data-view-start]") || view).focus({ preventScroll: true });
   }
 
   function chosen(selector) { return $$(selector).filter(i => i.checked).map(i => i.value); }

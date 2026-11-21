@@ -24,7 +24,7 @@
       <div class="hero">
         <div>
           <p class="eyebrow">Build durable knowledge</p>
-          <h1>Practice the decisions,<br>not just the definitions.</h1>
+          <h1 data-view-start tabindex="-1">Practice the decisions,<br>not just the definitions.</h1>
           <p class="hero-copy">Randomized questions, realistic scenarios, confidence checks, and targeted review across Spark, Kafka, and Airflow.</p>
         </div>
         <div class="hero-stat" aria-label="Question bank summary">
@@ -64,7 +64,7 @@
       </section>
     </section>
 
-    <section id="quiz-view" class="view quiz-shell" aria-live="polite">
+    <section id="quiz-view" class="view quiz-shell" aria-label="Study session" aria-live="polite" tabindex="-1">
       <div class="quiz-topbar">
         <button id="exit-button" class="text-button">← Exit</button>
         <div class="progress-track"><span id="progress-bar"></span></div>
@@ -99,7 +99,7 @@
 
     <section id="results-view" class="view">
       <div class="results-hero">
-        <p class="eyebrow">Session complete</p><h1 id="result-heading">Strong work.</h1>
+        <p class="eyebrow">Session complete</p><h1 id="result-heading" data-view-start tabindex="-1">Strong work.</h1>
         <div class="score-ring"><strong id="result-score">0%</strong><span>score</span></div>
         <p id="result-summary"></p>
         <div class="result-actions"><button id="review-mistakes-button" class="primary-button">Review mistakes</button><button id="new-session-button" class="secondary-button">New session</button></div>
@@ -109,7 +109,7 @@
     </section>
 
     <section id="dashboard-view" class="view">
-      <div class="section-heading dashboard-heading"><div><p class="eyebrow">Your progress</p><h1>Mastery dashboard</h1></div><button id="reset-progress" class="danger-button">Reset progress</button></div>
+      <div class="section-heading dashboard-heading"><div><p class="eyebrow">Your progress</p><h1 data-view-start tabindex="-1">Mastery dashboard</h1></div><button id="reset-progress" class="danger-button">Reset progress</button></div>
       <div id="dashboard-stats" class="stat-grid"></div>
       <section class="mastery-section"><h2>Topic mastery</h2><div id="mastery-list"></div></section>
       <section class="mastery-section"><h2>Study queue</h2><div id="study-queue"></div></section>
