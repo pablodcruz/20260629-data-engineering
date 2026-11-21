@@ -3,6 +3,7 @@
 
   const BANK = window.STUDY_QUESTIONS || [];
   const STORAGE_KEY = "de-study-lab-progress-v1";
+  const progressStatus = document.createElement("div");
   const state = { view: "home", session: null, timer: null, progress: loadProgress() };
   const $ = (selector) => document.querySelector(selector);
   const $$ = (selector) => [...document.querySelectorAll(selector)];
@@ -13,13 +14,26 @@
     try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || { questions: {}, sessions: [] }; }
     catch { return { questions: {}, sessions: [] }; }
   }
-  function saveProgress() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state.progress)); }
+  function saveProgress() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state.progress));
+    } catch {
+      if (!progressStatus.textContent) {
+        progressStatus.textContent = "Progress could not be saved. Changes are available only in this tab until you reload or close it.";
+      }
+      return;
+    }
+    progressStatus.textContent = "";
+  }
   function hashSeed(text) { let h = 2166136261; for (const c of text) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; }
   function rng(seed) { let n = seed || Date.now(); return () => { n |= 0; n = n + 0x6D2B79F5 | 0; let t = Math.imul(n ^ n >>> 15, 1 | n); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
   function shuffled(items, random = Math.random) { const copy = [...items]; for (let i = copy.length - 1; i > 0; i--) { const j = Math.floor(random() * (i + 1)); [copy[i], copy[j]] = [copy[j], copy[i]]; } return copy; }
   function escapeHtml(value) { const div = document.createElement("div"); div.textContent = value; return div.innerHTML; }
 
   function init() {
+    progressStatus.className = "message";
+    progressStatus.setAttribute("role", "status");
+    $("main").prepend(progressStatus);
     $("#bank-count").textContent = BANK.length;
     renderFilters();
     bindEvents();
@@ -103,7 +117,12 @@
     $("#answer-list").hidden = flash;
     $("#flashcard-prompt").hidden = !flash;
     $("#feedback").hidden = true; $("#feedback").classList.remove("wrong");
-    $("#confidence-panel").hidden = false; $$("[data-confidence]").forEach(b => b.classList.remove("selected"));
+    $("#confidence-panel").hidden = false;
+    $$("[data-confidence]").forEach(button => {
+      // A revealed flashcard installs a rating handler for that question only.
+      button.onclick = null;
+      button.classList.remove("selected");
+    });
     $("#submit-button").hidden = flash; $("#submit-button").disabled = true;
     $("#next-button").hidden = true; $("#skip-button").hidden = false;
   }
