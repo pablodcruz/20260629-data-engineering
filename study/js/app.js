@@ -103,7 +103,12 @@
     $("#answer-list").hidden = flash;
     $("#flashcard-prompt").hidden = !flash;
     $("#feedback").hidden = true; $("#feedback").classList.remove("wrong");
-    $("#confidence-panel").hidden = false; $$("[data-confidence]").forEach(b => b.classList.remove("selected"));
+    $("#confidence-panel").hidden = false;
+    $$("[data-confidence]").forEach(button => {
+      // A revealed flashcard installs a rating handler for that question only.
+      button.onclick = null;
+      button.classList.remove("selected");
+    });
     $("#submit-button").hidden = flash; $("#submit-button").disabled = true;
     $("#next-button").hidden = true; $("#skip-button").hidden = false;
   }
